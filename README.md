@@ -1,6 +1,6 @@
-# Compile Monero on Ubuntu 14.04 x64
+# Compile Monero on Ubuntu 14.04 x86_64
 The example shows how to compile current github version of [Monero](https://getmonero.org/)
-on Ubuntu 14.04 x64.
+on Ubuntu 14.04 x86_64.
 
 ## Preparation
 Before proceding to the copilation, the following packages are required
@@ -13,7 +13,7 @@ sudo apt-get update
 sudo apt-get install git
 
 # install dependencies
-sudo apt-get install build-essential cmake libboost1.55-all-dev miniupnpc libunbound-dev graphviz doxygen libdb-dev
+sudo apt-get install build-essential cmake libboost1.55-all-dev miniupnpc libunbound-dev graphviz doxygen libdb5.1++-dev
  ```
 
 ## Compilation
@@ -42,15 +42,14 @@ sudo mkdir /opt/bitmonero
 sudo mv ./bin/* /opt/bitmonero/
 ```
 
-To start now the only think left is to start the Monero daemon and let it
-download the blockchain and synchronize with the Monero network. After that,
-you can run your the simplewallet.
+Now we can start the Monero daemon and let it
+download the blockchain and synchronize itself with the Monero network. After that, you can run your the simplewallet.
 
 ```bash
-# launch the Monero node daemon and let it synchronize with the Monero network
+# launch the Monero daemon and let it synchronize with the Monero network
 /opt/bitmonero/bitmonerod
 
-# launch the Monero wallet
+# launch the Monero wallet 
 /opt/bitmonero/simplewallet
 ```
 
