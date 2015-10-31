@@ -53,7 +53,7 @@ download the blockchain and synchronize itself with the Monero network. After th
 /opt/bitmonero/simplewallet
 ```
 
-## Command hisotry and tab completion
+## Command hisotry and tab completion (optional)
 Both simplewallet and bitmonerod are command line programs, and they do
 not support command history and tab completion. This can be annoying for
 linux users, who are usually accustomed to these features in a command line.
