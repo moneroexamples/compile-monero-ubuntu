@@ -1,32 +1,25 @@
-# Compile Monero on Whonix-Workstation for VirtualBox
-[Monero](https://getmonero.org/) and [Whonix](https://www.whonix.org/) are tools
-that privacy centric users can use as part of their privacy enchancing toolbox.
-
-One problem with Monero is that, if you want to run full Monero node, your
-IP address will be exposed to others in the Monero network. This, for some,
-might be not very good idea.
-
-One way to overcome this problem is to run the node through Tor. And this can be done having the Monero node runnign insde the Whonix.
-
-Is this the best solution possible? Probobably not, as runige node in VirtualBox through tor can be slow (depending on your computer). In future, Monero will solve this problem by incorporating [i2p support](https://forum.getmonero.org/1/news-announcements-and-editorials/208/why-we-chose-i2p-over-tor).
+# Compile Monero on Ubuntu 14.04 x64
+The example shows how to compile current github version of [Monero](https://getmonero.org/)
+on Ubuntu 14.04 x64.
 
 ## Preparation
- Assuming that you have Whonix setup into your VirtualBox, the first thing that
- should be done is to increase Whonix-Workstation's ram. The default size
- is 768 MB this is not enough. I usually set it up to 2 GB, but I think 1GB
- should also be enough.
+Before proceding to the copilation, the following packages are required
 
  ```bash
- VBoxManage modifyvm Whonix-Workstation --memory 2048
+# refresh ubuntu's repository
+sudo apt-get update
+
+#install git
+sudo apt-get install git
+
+# install dependencies
+sudo apt-get install build-essential cmake libboost1.55-all-dev miniupnpc libunbound-dev graphviz doxygen libdb-dev
  ```
 
 ## Compilation
-Start your Whonix-Workstation and do the following in the workstation.
+Having the dependencies, we can download the current Monero version and compile it.
 
 ```bash
-# install dependencies
-sudo apt-get install build-essential cmake libboost1.55-all-dev miniupnpc  libunbound-dev graphviz doxygen liblmdb-dev
-
 # download the latest bitmonero source code from github
 git clone https://github.com/monero-project/bitmonero.git
 
@@ -34,29 +27,38 @@ git clone https://github.com/monero-project/bitmonero.git
 cd bitmonero/
 
 # compile
-cmake .
-make
+# cmake . #  optional for configuration and checking what is available or missing
+make # or make -j number_of_threads, e.g., make -j 2
 ```
 
 After successful compilation, the Monero binaries should be located in `./bin`
 
 I usually move the binaries into `/opt/bitmonero/` folder, so this can be done
 as follows:
-```
+
+```bash
+# optional
 sudo mkdir /opt/bitmonero
 sudo mv ./bin/* /opt/bitmonero/
 ```
 
-To start now the only think left is to start the Monero deamon and let it
+To start now the only think left is to start the Monero daemon and let it
 download the blockchain and synchronize with the Monero network. After that,
 you can run your the simplewallet.
 
-Please note that downloading the full blockchain (over 7 GB as of October 2015) will probably be very slow. So it would be better to get download it independelty
-and then copy to the default monero folder, i.e., `~/.bitmonero/lmdb/`
-
-```
-# launch the monero node demon and let it synchronize with the monero network
+```bash
+# launch the Monero node daemon and let it synchronize with the Monero network
 /opt/bitmonero/bitmonerod
 
-# launch the monero wallet
-#/opt/bitmonero/simplewallet
+# launch the Monero wallet
+/opt/bitmonero/simplewallet
+```
+
+## How can you help?
+
+Constructive criticism, code and website edits are always good. They can be made through github.
+
+Some Monero are also welcome:
+```
+48daf1rG3hE1Txapcsxh6WXNe9MLNKtu7W7tKTivtSoVLHErYzvdcpea2nSTgGkz66RFP4GKVAsTV14v6G3oddBTHfxP6tU
+```
