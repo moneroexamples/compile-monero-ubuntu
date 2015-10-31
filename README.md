@@ -39,7 +39,7 @@ as follows:
 ```bash
 # optional
 sudo mkdir /opt/bitmonero
-sudo mv /build/release/bin/* /opt/bitmonero/
+sudo mv ./build/release/bin/* /opt/bitmonero/
 ```
 
 Now we can start the Monero daemon and let it
@@ -58,7 +58,39 @@ Both simplewallet and bitmonerod are command line programs, and they do
 not support command history and tab completion. This can be annoying for
 linux users, who are usually accustomed to these features in a command line.
 
-This problem can be overcome using [rlwrap](https://github.com/hanslub42/rlwrap)
+This problem can be overcome using [rlwrap](https://github.com/hanslub42/rlwrap).
+The rlwrap requires a file with a list of commands to be used in tab
+completion. The files can be downloaded here:
+
+ - [monerocommands_bitmonerod.txt](https://github.com/moneroexamples/compile-monero-ubuntu/blob/master/monerocommands_bitmonerod.txt)
+ - [monerocommands_simplewallet.txt](https://github.com/moneroexamples/compile-monero-ubuntu/blob/master/monerocommands_simplewallet.txt)
+
+
+```bash
+# install rlwrap
+sudo apt-get install rlwrap
+
+# download the commands files, for example, to your home folder
+cd ~
+wget https://raw.githubusercontent.com/moneroexamples/compile-monero-ubuntu/master/monerocommands_bitmonerod.txt
+
+wget https://raw.githubusercontent.com/moneroexamples/compile-monero-ubuntu/master/monerocommands_simplewallet.txt
+
+# having the file for the daemon, it can be run as follows:
+rlwrap -f monerocommands_bitmonerod.txt /opt/bitmonero/bitmonerod
+
+# having the file for the wallet, it can be run as follows:
+rlwrap -f /path/to/monerocommands_simplewallet.txt /opt/bitmonero/simplewallet
+
+```
+
+Probaly easier to make aliases into your ~/.bashrc, for example:
+
+```bash
+# add this to the end of your ~/.bashrc
+alias moneronode="rlwrap -f monerocommands_bitmonerod.txt /opt/bitmonero/bitmonerod"
+alias monerowallet="rlwrap -f monerocommands_simplewallet.txt /opt/bitmonero/simplewallet"
+```
 
 ## How can you help?
 
