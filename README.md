@@ -30,7 +30,7 @@ cd bitmonero/
 # cmake . #  optional for configuration and checking what is available or missing
 make # or make -j number_of_threads, e.g., make -j 2
 ```
-## Instalation (optional)
+## Installation (optional)
 After successful compilation, the Monero binaries should be located in `./bin`
 
 I usually move the binaries into `/opt/bitmonero/` folder. This can be done
