@@ -27,7 +27,6 @@ git clone https://github.com/monero-project/bitmonero.git
 cd bitmonero/
 
 # compile
-# cmake . #  optional for configuration and checking what is available or missing
 make # or make -j number_of_threads, e.g., make -j 2
 ```
 ## Installation (optional)
