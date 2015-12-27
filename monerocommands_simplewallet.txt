@@ -6,6 +6,7 @@ get_tx_key
 help
 incoming_transfers
 integrated_address
+payments
 refresh
 rescan_spent
 save
@@ -14,6 +15,7 @@ save_watch_only
 seed
 set
 set_log
+show_transfers
 spendkey
 start_mining
 stop_mining

@@ -1,3 +1,5 @@
+ban
+bans
 diff
 exit
 fast_exit
@@ -28,3 +30,4 @@ status
 stop_daemon
 stop_mining
 stop_save_graph
+unban
