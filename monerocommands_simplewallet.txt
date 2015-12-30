@@ -4,6 +4,7 @@ bc_height
 check_tx_key
 get_tx_key
 help
+exit
 incoming_transfers
 integrated_address
 payments
